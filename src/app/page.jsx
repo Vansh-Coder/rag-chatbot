@@ -29,6 +29,7 @@ export default function Home() {
             Start your study journey with EduBot now!
           </p>
           <div className="mt-6 flex justify-center">
+            <MovingBorderButton label="Signup" path="/signup" />
             <MovingBorderButton label="Login" path="/login" />
             <MovingBorderButton label="Try it first!" path="/try" />
           </div>
