@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { auth, db } from "../../../firebaseConfig";
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
@@ -22,7 +22,6 @@ export default function Home() {
       // signup
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      // email verification
       // save additional info
       await setDoc(doc(db, "users", user.uid), {
         firstName: firstName,
