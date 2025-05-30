@@ -93,7 +93,7 @@ export default function Home() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-2 rounded-md bg-blue-600 px-5 py-2 text-white w-full font-semibold flex items-center justify-center tracking-wide transition hover:bg-blue-700"
+          className="mt-5 rounded-md bg-blue-600 px-5 py-2 text-white w-full font-semibold flex items-center justify-center tracking-wide transition hover:bg-blue-700"
         >
           {loading && (
             <svg
