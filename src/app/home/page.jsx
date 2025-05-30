@@ -10,7 +10,7 @@ export default function Home() {
       </section>
 
       {/* Chat Section */}
-      <section className="flex flex-1 flex-col rounded-lg bg-white p-4 shadow">
+      <section className="flex flex-1 flex-col rounded-lg bg-black p-4 shadow">
         <ChatWindow />
       </section>
     </main>
