@@ -1,9 +1,12 @@
 import os
 import glob
 import shutil
-from fastapi import FastAPI, Depends, HTTPException, UploadFile, File
+from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Header, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+import firebase_admin
+from firebase_admin import credentials, auth as firebase_auth
 
 from rag_engine import rebuild_user_index, load_vectorstore, retrieve_top_k, generate_answer
 
@@ -24,12 +27,41 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+if os.getenv("FIREBASE_SERVICE_ACCOUNT_CRED"):
+    cred = credentials.ApplicationDefault()
+else:
+    raise RuntimeError(
+        "Firebase service account JSON not found."
+    )
+
+firebase_admin.initialize_app(cred)
+
 # ==================================================
-# AUTHENTICATION STUB
+# FIREBASE AUTH DEPENDENCY
 # ==================================================
-def get_current_user_id():
-    # Replace with real auth logic in production
-    return "test_user_123"
+def get_current_user_id(authorization: str = Header(...)):
+    """
+    Extracts and verifies the Firebase ID token from the Authorization header.
+    Returns the UID if valid, otherwise raises HTTPException(401)
+    """
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing or invalid Authorization header",
+        )
+    
+    id_token = authorization[len("Bearer ") :].strip()
+    try:
+        decoded_token = firebase_auth.verify_id_token(id_token)
+        uid = decoded_token.get("uid")
+        if not uid:
+            raise ValueError("UID not found in token")
+        return uid
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=f"Invalid or expired Firebase ID token: {e}",
+        )
 
 # ==================================================
 # Pydantic Model for /query
@@ -145,6 +177,7 @@ async def query_rag(req: QueryRequest, user_id: str = Depends(get_current_user_i
 
 # ==================================================
 # GET /
+#   - Simple health check
 # ==================================================
 @app.get("/")
 async def root():

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-export default function ChatWindow({ hasDocs }) {
+export default function ChatWindow({ hasDocs, idToken }) {
   const [messages, setMessages] = useState([]); // chat history
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +35,10 @@ export default function ChatWindow({ hasDocs }) {
     try {
       const response = await fetch(`${BACKEND_URL}/query`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${idToken}`,
+        },
         body: JSON.stringify({ question: userMessage.content }),
       });
       if (!response.ok) {

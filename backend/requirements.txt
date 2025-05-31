@@ -9,3 +9,4 @@ python-docx
 PyPDF2
 python-dotenv
 python-multipart
+firebase-admin

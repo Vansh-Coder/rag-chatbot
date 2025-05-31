@@ -31,21 +31,25 @@ const fileTypeLabel = (filename) => {
   }
 };
 
-export const FileUpload = ({ onChange }) => {
-  const [filenames, setFilenames] = useState([]); // e.g. ["doc1.pdf", "notes.txt"]
+export const FileUpload = ({ onChange, idToken }) => {
+  const [filenames, setFilenames] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
   const fileInputRef = useRef(null);
+  let idToken = null;
 
-  // 1. Fetch the current list of filenames on mount
+  // Fetch the current list of filenames on mount
   useEffect(() => {
     fetchFileList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchFileList = async () => {
     try {
-      const res = await fetch(`${BACKEND_URL}/uploads`);
+      const res = await fetch(`${BACKEND_URL}/uploads`, {
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
       if (!res.ok) {
         throw new Error("Failed to fetch file list");
       }
@@ -74,6 +78,9 @@ export const FileUpload = ({ onChange }) => {
 
       const res = await fetch(`${BACKEND_URL}/upload`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
         body: formData,
       });
 
@@ -111,7 +118,12 @@ export const FileUpload = ({ onChange }) => {
     try {
       const res = await fetch(
         `${BACKEND_URL}/upload/${encodeURIComponent(filenameToRemove)}`,
-        { method: "DELETE" },
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${idToken}`,
+          },
+        },
       );
       if (!res.ok) {
         const err = await res.json();

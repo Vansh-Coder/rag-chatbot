@@ -60,6 +60,9 @@ backend/*.index
 # Env files
 /backend/.env
 
+# Firebase Admin Key
+/backend/firebase-admin-creds.json
+
 # PyInstaller
 /backend/*.manifest
 /backend/*.spec
@@ -95,7 +98,7 @@ Thumbs.db
 .history
 
 # -----------------------
-# Global dotenv ignore (recommended)
+# Global dotenv ignore
 # -----------------------
 **/.env
 **/.env.*
