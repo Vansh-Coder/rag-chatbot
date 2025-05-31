@@ -1,41 +1,101 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# -----------------------
+# Node / Next.js (frontend)
+# -----------------------
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+/frontend/node_modules/
+/frontend/.pnp
+/frontend/pnpm-lock.yaml
+/frontend/yarn.lock
+/frontend/package-lock.json
 
-# testing
-/coverage
+# Next.js
+/frontend/.next/
+/frontend/out/
+/frontend/.vercel
 
-# next.js
-/.next/
-/out/
+# env files
+/frontend/.env*
+# vercel build output
+.vercel
 
-# production
-/build
+# TypeScript
+/frontend/next-env.d.ts
+/frontend/*.tsbuildinfo
 
-# misc
-.DS_Store
-*.pem
+# Testing
+/frontend/coverage
 
-# debug
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# -----------------------
+# Python / FastAPI (backend)
+# -----------------------
 
-# vercel
-.vercel
+# Byte-compiled / optimized files
+/backend/__pycache__/
+/backend/*.py[cod]
+/backend/*$py.class
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# C extensions
+/backend/*.so
+
+# Virtual envs
+/backend/env/
+/backend/venv/
+/backend/.venv/
+/backend/ENV/
+/backend/env.bak/
+/backend/venv.bak/
+
+# FAISS index (generated)
+backend/faiss_index/
+backend/*.faiss
+backend/*.index
+
+# Env files
+/backend/.env
+
+# PyInstaller
+/backend/*.manifest
+/backend/*.spec
+
+# Installer logs
+/backend/pip-log.txt
+/backend/pip-delete-this-directory.txt
+
+# Unit test / coverage
+/backend/.coverage
+/backend/.pytest_cache/
+/backend/htmlcov/
+/backend/.mypy_cache/
+/backend/.hypothesis/
+.backend/.nox/
+.backend/.tox/
+.backend/.cache
+
+# Type checkers
+/backend/.dmypy.json
+/backend/dmypy.json
+/backend/.pyre/
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Jupyter
+.ipynb_checkpoints
+.history
+
+# -----------------------
+# Global dotenv ignore (recommended)
+# -----------------------
+**/.env
+**/.env.*
