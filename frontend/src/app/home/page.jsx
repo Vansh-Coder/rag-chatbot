@@ -1,16 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { onAuthStateChanged } from "firebase/auth";
 import ChatWindow from "@/components/chatWindow";
 import { FileUpload } from "@/components/fileUpload";
 import { auth } from "../../../firebaseConfig";
 
-export default async function Home() {
+export default function Home() {
   // Lifted state holding the array of filenames from the backend
   const [filenames, setFilenames] = useState([]);
-  const user = auth.currentUser;
-  if (!user) throw new Error("User not authenticated!");
-  const idToken = await user.getIdToken();
+  const [idToken, setIdToken] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const token = await user.getIdToken();
+        setIdToken(token);
+      } else {
+        router.push("/login");
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe(); // Clean up listener on unmount
+  }, [router]);
+
+  if (loading) return <div className="text-orange-500">Loading...</div>;
 
   return (
     <main className="flex min-h-screen flex-col space-y-4 bg-gray-800 p-4 md:flex-row md:space-x-4 md:space-y-0">

@@ -36,16 +36,20 @@ export const FileUpload = ({ onChange, idToken }) => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
   const fileInputRef = useRef(null);
-  let idToken = null;
 
   // Fetch the current list of filenames on mount
   useEffect(() => {
+    if (!idToken) {
+      // No token yet—skip
+      return;
+    }
     fetchFileList();
   }, []);
 
   const fetchFileList = async () => {
     try {
       const res = await fetch(`${BACKEND_URL}/uploads`, {
+        method: "GET",
         headers: {
           Authorization: `Bearer ${idToken}`,
         },
