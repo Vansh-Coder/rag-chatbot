@@ -1,5 +1,6 @@
 import os
 import glob
+import json
 import shutil
 from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Header, status
 from fastapi.middleware.cors import CORSMiddleware
@@ -27,13 +28,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-if os.getenv("FIREBASE_SERVICE_ACCOUNT_CRED"):
-    cred = credentials.ApplicationDefault()
-else:
+# -------------------------------------------------------
+# Initialize Firebase Admin by reading JSON from env var:
+# -------------------------------------------------------
+sa_json = os.getenv("FIREBASE_SERVICE_ACCOUNT_JSON")
+if not sa_json:
     raise RuntimeError(
-        "Firebase service account JSON not found."
+        "Set FIREBASE_SERVICE_ACCOUNT_JSON in environment to the service account JSON."
     )
 
+try:
+    sa_dict = json.loads(sa_json)
+except json.JSONDecodeError as e:
+    raise RuntimeError(f"Could not parse FIREBASE_SERVICE_ACCOUNT_JSON: {e}")
+
+cred = credentials.Certificate(sa_dict)
 firebase_admin.initialize_app(cred)
 
 # ==================================================
