@@ -60,9 +60,6 @@ backend/*.index
 # Env files
 /backend/.env
 
-# Firebase Admin Key
-/backend/firebase-admin-creds.json
-
 # PyInstaller
 /backend/*.manifest
 /backend/*.spec
