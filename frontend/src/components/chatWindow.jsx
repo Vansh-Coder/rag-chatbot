@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { TextGenerateEffect } from "./ui/textGenerateEffect";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -61,7 +62,7 @@ export default function ChatWindow({ hasDocs, idToken }) {
         Ask EduBot
       </h2>
 
-      <div className="mb-8 flex max-h-[75vh] flex-1 flex-col space-y-2 overflow-y-auto pr-7 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-600">
+      <div className="mb-8 flex max-h-[75vh] flex-1 flex-col space-y-4 overflow-y-auto pr-7 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-600">
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -71,12 +72,20 @@ export default function ChatWindow({ hasDocs, idToken }) {
                 : "self-start bg-gray-700 text-white"
             }`}
           >
-            {msg.content}
+            {msg.role === "user" ? (
+              msg.content
+            ) : (
+              <TextGenerateEffect
+                duration={0.5}
+                filter={false}
+                words={msg.content}
+              />
+            )}
           </div>
         ))}
 
         {isLoading && (
-          <div className="italic text-gray-400">Bot is thinking...</div>
+          <div className="italic text-gray-400">EduBot is thinking...</div>
         )}
 
         {error && <div className="text-red-500">{error}</div>}
