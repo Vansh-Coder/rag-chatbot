@@ -46,6 +46,14 @@ export const FileUpload = ({ onChange, idToken }) => {
     fetchFileList();
   }, []);
 
+  const ACCEPTED_MIME_TYPES = {
+    "application/pdf": [".pdf"],
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [
+      ".docx",
+    ],
+    "text/plain": [".txt"],
+  };
+
   const fetchFileList = async () => {
     try {
       const res = await fetch(`${BACKEND_URL}/uploads`, {
@@ -59,19 +67,25 @@ export const FileUpload = ({ onChange, idToken }) => {
       }
       const data = await res.json();
       setFilenames(data.filenames || []);
-      if (onChange) onChange(data.filenames || []);
+      onChange && onChange(data.filenames || []);
     } catch (err) {
       console.error(err);
       setError("Could not load uploaded files");
       setFilenames([]);
-      if (onChange) onChange([]);
+      onChange && onChange([]);
     }
   };
 
-  // 2. Handle a new file drop or selection
+  // Handle a new file drop or selection
   const handleFileChange = async (newFiles) => {
     if (!newFiles.length) return;
     const file = newFiles[0];
+
+    // Check MIME type client-side before uploading
+    if (!Object.keys(ACCEPTED_MIME_TYPES).includes(file.type)) {
+      setError("Unsupported file type. Only PDF, DOCX, and TXT allowed.");
+      return;
+    }
 
     setUploading(true);
     setError(null);
@@ -107,12 +121,13 @@ export const FileUpload = ({ onChange, idToken }) => {
     fileInputRef.current?.click();
   };
 
-  const { getRootProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     multiple: false,
     noClick: true,
+    accept: ACCEPTED_MIME_TYPES,
     onDrop: (acceptedFiles) => handleFileChange(acceptedFiles),
-    onDropRejected: (error) => {
-      console.log("Drop rejected:", error);
+    onDropRejected: (fileRejections) => {
+      setError("Unsupported file type. Only PDF, DOCX, and TXT allowed.");
     },
   });
 
@@ -149,6 +164,9 @@ export const FileUpload = ({ onChange, idToken }) => {
         className="group/file relative block h-full w-full cursor-pointer overflow-hidden rounded-lg pb-5 pt-10"
       >
         <input
+          {...getInputProps({
+            accept: ".pdf,.docx,.txt",
+          })}
           ref={fileInputRef}
           id="file-upload-handle"
           type="file"
