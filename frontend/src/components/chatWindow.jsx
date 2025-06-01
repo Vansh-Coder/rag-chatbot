@@ -58,14 +58,14 @@ export default function ChatWindow({ hasDocs, idToken }) {
   return (
     <div className="flex h-full flex-col">
       <h2 className="mb-4 text-center text-lg font-semibold text-white">
-        Ask the Chatbot
+        Ask EduBot
       </h2>
 
-      <div className="mb-4 flex max-h-[75vh] flex-1 flex-col space-y-2 overflow-y-auto pr-7 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-600">
+      <div className="mb-8 flex max-h-[75vh] flex-1 flex-col space-y-2 overflow-y-auto pr-7 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-600">
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`max-w-[90%] rounded-lg p-3 text-sm ${
+            className={`max-w-[90%] rounded-lg p-3 text-sm tracking-wide ${
               msg.role === "user"
                 ? "self-end bg-gray-600 text-white"
                 : "self-start bg-gray-700 text-white"

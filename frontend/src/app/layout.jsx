@@ -1,15 +1,13 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "RAG Project"
+  title: "RAG Project",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <body className="bg-black">{children}</body>
     </html>
   );
 }

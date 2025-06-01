@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { auth } from "../../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -46,39 +47,41 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen w-full items-center justify-center bg-black">
       <form
         onSubmit={handleSubmit}
-        className="mx-auto w-full max-w-md rounded-md bg-white p-6 shadow-md"
+        className="mx-auto w-full max-w-md rounded-xl border border-white/20 bg-white/10 px-8 py-6 shadow-xl backdrop-blur-sm"
       >
-        <h2 className="mb-4 text-center text-2xl font-bold">Login</h2>
+        <h2 className="mb-6 text-center text-3xl font-semibold text-white">
+          Login
+        </h2>
 
-        <label className="mb-2 block">
-          <span className="text-gray-700">Email</span>
+        <label className="mb-4 block">
+          <span className="text-neutral-300">Email</span>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+            className="mt-1 block w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2 text-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </label>
 
-        <label className="mb-2 block">
-          <span className="text-gray-700">Password</span>
+        <label className="mb-4 block">
+          <span className="text-neutral-300">Password</span>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+            className="mt-1 block w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2 text-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </label>
 
         <button
           type="submit"
           disabled={loading}
-          className="mt-5 flex w-full items-center justify-center rounded-md bg-blue-600 px-5 py-2 font-semibold tracking-wide text-white transition hover:bg-blue-700"
+          className="mt-6 flex w-full items-center justify-center rounded-md bg-blue-600 px-5 py-2 font-semibold tracking-wide text-white transition hover:bg-blue-700 disabled:opacity-50"
         >
           {loading && (
             <svg
@@ -104,6 +107,12 @@ export default function Home() {
           )}
           {loading ? "Loading..." : "Confirm"}
         </button>
+
+        <p className="mt-6 text-center text-base text-neutral-400">
+          <Link href="/signup" className="text-blue-400 hover:underline">
+            or Signup
+          </Link>
+        </p>
       </form>
     </div>
   );

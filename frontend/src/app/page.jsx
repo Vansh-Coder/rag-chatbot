@@ -32,7 +32,6 @@ export default function Home() {
           <div className="mt-6 flex justify-center">
             <MovingBorderButton label="Signup" path="/signup" />
             <MovingBorderButton label="Login" path="/login" />
-            <MovingBorderButton label="Try it first!" path="/try" />
           </div>
         </div>
       </div>

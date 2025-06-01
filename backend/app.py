@@ -24,13 +24,13 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
-# -------------------------------------------------------
+# =======================================================
 # Initialize Firebase Admin by reading JSON from env var:
-# -------------------------------------------------------
+# =======================================================
 sa_json = os.getenv("FIREBASE_SERVICE_ACCOUNT_JSON")
 if not sa_json:
     raise RuntimeError(

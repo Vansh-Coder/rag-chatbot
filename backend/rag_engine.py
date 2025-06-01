@@ -9,7 +9,7 @@ import PyPDF2
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 
-# Load your OpenAI API key from .env
+# Load the OpenAI API key from environment variables
 load_dotenv()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 
