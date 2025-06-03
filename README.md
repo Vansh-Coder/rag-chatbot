@@ -2,10 +2,10 @@
 
 *Context-aware AI chat built on your own documents.*
 
-[![License](https://img.shields.io/github/license/Vansh-Coder/RAG-Project?style=flat-square&logo=opensourceinitiative&logoColor=white&color=E92063)]()
-[![Last Commit](https://img.shields.io/github/last-commit/Vansh-Coder/RAG-Project?style=flat-square&logo=git&logoColor=white&color=E92063)]()
-[![Top Language](https://img.shields.io/github/languages/top/Vansh-Coder/RAG-Project?style=flat-square&color=E92063)]()
-[![Language Count](https://img.shields.io/github/languages/count/Vansh-Coder/RAG-Project?style=flat-square&color=E92063)]()
+[![License](https://img.shields.io/github/license/Vansh-Coder/rag-chatbot?style=flat-square&logo=opensourceinitiative&logoColor=white&color=E92063)]()
+[![Last Commit](https://img.shields.io/github/last-commit/Vansh-Coder/rag-chatbot?style=flat-square&logo=git&logoColor=white&color=E92063)]()
+[![Top Language](https://img.shields.io/github/languages/top/Vansh-Coder/rag-chatbot?style=flat-square&color=E92063)]()
+[![Language Count](https://img.shields.io/github/languages/count/Vansh-Coder/rag-chatbot?style=flat-square&color=E92063)]()
 
 *Built with the tools and technologies:*
 
@@ -50,7 +50,7 @@
 
 ## Overview
 
-RAG-Project is a Retrieval-Augmented Generation (RAG)–powered chatbot application. Users can upload documents (PDF, DOCX, TXT) as context, then chat with the AI to get answers based on those uploads and chat history. The frontend is built with Next.js & Tailwind CSS (hosted on Vercel). Authentication is managed via Firebase. The backend is a FastAPI service (Python) that handles document ingestion, embedding, vector storage, retrieval, and chat completion (hosted on Render).
+EduBot is a Retrieval-Augmented Generation (RAG)–powered chatbot application. Users can upload documents (PDF, DOCX, TXT) as context, then chat with the AI to get answers based on those uploads and chat history. The frontend is built with Next.js & Tailwind CSS (hosted on Vercel). Authentication is managed via Firebase. The backend is a FastAPI service (Python) that handles document ingestion, embedding, vector storage, retrieval, and chat completion (hosted on Render).
 
 ---
 
@@ -140,14 +140,14 @@ Convert your the Firebase service-account JSON to string and store that in the `
 First, clone the repository:
 
 ```bash
-git clone https://github.com/Vansh-Coder/RAG-Project.git
-cd RAG-Project
+git clone https://github.com/Vansh-Coder/rag-chatbot.git
+cd rag-chatbot
 ```
 
 The repo structure:
 
 ```
-RAG-Project/
+rag-chatbot/
 ├── frontend/   ← Next.js application
 ├── backend/    ← FastAPI service
 ├── LICENSE
@@ -301,7 +301,7 @@ Once built, Render provides a URL (e.g., `https://rag-backend.onrender.com`). Us
 ## Folder Structure
 
 ```
-RAG-Project/
+rag-chatbot/
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
@@ -353,7 +353,7 @@ Contributions are welcome! Please follow these steps:
 1. Fork the repository.  
 2. Clone your fork locally:  
    ```bash
-   git clone https://github.com/your-username/RAG-Project.git
+   git clone https://github.com/your-username/rag-chatbot.git
    ```  
 3. Create a new branch:  
    ```bash
@@ -368,7 +368,7 @@ Contributions are welcome! Please follow these steps:
    ```bash
    git push origin feature/your-feature-name
    ```  
-7. Open a Pull Request against `Vansh-Coder/RAG-Project`.  
+7. Open a Pull Request against `Vansh-Coder/rag-chatbot`.  
 
 Ensure code is formatted consistently:  
 - Frontend: Prettier / ESLint  
