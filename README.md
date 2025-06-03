@@ -1,6 +1,6 @@
-# RAG-Project
+# EduBot
 
-*Innovating text analysis with lightning-fast retrieval.*
+*An Innovating text analysis with lightning-fast retrieval.*
 
 [![License](https://img.shields.io/github/license/Vansh-Coder/RAG-Project?style=flat-square&logo=opensourceinitiative&logoColor=white&color=E92063)]()
 [![Last Commit](https://img.shields.io/github/last-commit/Vansh-Coder/RAG-Project?style=flat-square&logo=git&logoColor=white&color=E92063)]()
@@ -58,14 +58,14 @@ RAG-Project is a Retrieval-Augmented Generation (RAG)–powered chatbot applicat
 
 - **Next.js** (React + SSR/SSG)  
 - **Tailwind CSS** for styling  
-- **Firebase Auth** (Email/password, Google)  
+- **Firebase Auth** (Email/password)  
 - **Vercel** (hosting)  
 - Axios / `fetch` for API calls  
 
 ### Backend
 
 - **FastAPI** (Python) for REST APIs  
-- **Python 3.10+**  
+- **Python 3.9+**  
 - OpenAI Embeddings & Chat API  
 - **FAISS** (vector store)  
 - **Render.com** (hosting & SSL)  
@@ -76,20 +76,19 @@ RAG-Project is a Retrieval-Augmented Generation (RAG)–powered chatbot applicat
 ## Prerequisites
 
 - **Node.js** ≥ 16 & **npm** (or Yarn)  
-- **Python** ≥ 3.10 & **pip**  
+- **Python** ≥ 3.9 & **pip**  
 - **Git** (to clone repo)  
 
 ### Required Accounts / API Keys
 
 1. **Firebase** – create a project with Authentication enabled (Email & Google sign-in).  
-2. **OpenAI** – obtain an API key for embeddings & chat/completion.  
-3. **FAISS** – can run locally (no account needed).  
+2. **OpenAI** – obtain an API key (Model Turbo-3.5) for embeddings & chat/completion.
 
 ---
 
 ## Environment Variables
 
-Create a `.env.local` in `/frontend` and a `.env` in `/backend` with the following:
+Create a `.env` in `/frontend` and a `.env` in `/backend` with the following:
 
 ### Frontend (`.env.local`)
 
@@ -101,7 +100,7 @@ NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 
-NEXT_PUBLIC_API_BASE_URL=https://<your-backend-domain>.onrender.com
+NEXT_PUBLIC_BACKEND_URL=https://<your-backend-domain>.onrender.com
 ```
 
 > **IMPORTANT:** Never commit real API keys. Use environment settings in Vercel/Render.
@@ -111,14 +110,11 @@ NEXT_PUBLIC_API_BASE_URL=https://<your-backend-domain>.onrender.com
 ### Backend (`.env`)
 
 ```dotenv
-SECRET_KEY=some_random_secret_string
-GOOGLE_APPLICATION_CREDENTIALS=path/to/your-firebase-service-account.json
+FIREBASE_SERVICE_ACCOUNT_JSON=firebase-service-account-json_converted_to_string
 OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX
-VECTOR_STORE_PATH=./.vectorstore
-LOG_LEVEL=info
 ```
 
-Place the Firebase service-account JSON in the repo root and ensure `GOOGLE_APPLICATION_CREDENTIALS` points to it. Backend verifies and decodes Firebase ID Tokens using the Admin SDK.
+Convert your the Firebase service-account JSON to string and store that in the `FIREBASE_SERVICE_ACCOUNT_JSON` environment varriable as shown above. Backend verifies and decodes Firebase ID Tokens using the Admin SDK.
 
 ---
 
@@ -157,7 +153,7 @@ npm install
 yarn install
 ```
 
-3. Create `.env.local` (see [Environment Variables](#environment-variables)).
+3. Create `.env` (see [Environment Variables](#environment-variables)).
 
 4. Start development server:
 
@@ -194,9 +190,9 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-3. Place your Firebase service-account JSON (e.g., `firebase-service-account.json`) in the backend folder and set `GOOGLE_APPLICATION_CREDENTIALS` accordingly.
+3. Create `.env` (see [Environment Variables](#environment-variables)).
 
-4. Create `.env` (see [Environment Variables](#environment-variables)).
+4. Convert your Firebase service-account JSON to string and set `FIREBASE_SERVICE_ACCOUNT_JSON` environment variable accordingly.
 
 5. Initialize or restore your FAISS vector store:
 
@@ -205,14 +201,13 @@ pip install -r requirements.txt
 6. Run development server:
 
 ```bash
-uvicorn main:app --reload
+uvicorn app:app --reload
 ```
 
 - FastAPI runs at `http://localhost:8000`.  
 - Visit `http://localhost:8000/docs` for Swagger UI to test endpoints:  
-  - `/upload_document`  
-  - `/chat`  
-  - `/list_documents`  
+  - `/upload`  
+  - `/query` 
   - etc.
 
 ---
@@ -224,13 +219,13 @@ uvicorn main:app --reload
 1. Push the `frontend/` folder to GitHub (or configure monorepo).  
 2. In Vercel Dashboard:  
    - Link the repo (or frontend directory).  
-   - Add environment variables (all `NEXT_PUBLIC_*` from `.env.local`).  
+   - Add environment variables (all `NEXT_PUBLIC_*` from `.env`).  
 3. Build settings:  
    - Framework: Next.js  
    - Build command: `npm run build`  
    - Output directory: `.next`  
 
-Every push to `main` triggers a deploy. You’ll get a public URL (e.g., `https://rag-project.vercel.app`).
+Every push to `main` triggers a deploy. You’ll get a public URL (e.g., `https://rag-project-blond.vercel.app`).
 
 ---
 
@@ -243,15 +238,12 @@ Every push to `main` triggers a deploy. You’ll get a public URL (e.g., `https:
    - Environment:  
      - Runtime: Python 3  
      - Build command: `pip install -r requirements.txt`  
-     - Start command: `uvicorn main:app --host 0.0.0.0 --port 10000`  
-   - Add environment variables from `.env`:  
+     - Start command: `uvicorn app:app --host 0.0.0.0 --port $PORT`  
+   - Add environment variables from `.env`:
      - `OPENAI_API_KEY`  
-     - `GOOGLE_APPLICATION_CREDENTIALS` (use Render Secret Files)  
-     - `SECRET_KEY`  
-     - `VECTOR_STORE_PATH`  
-     - `LOG_LEVEL`  
+     - `FIREBASE_SERVICE_ACCOUNT_JSON`  
 
-3. Enable CORS in `main.py` (if not already):
+3. Modify CORS in `app.py`:
 
 ```python
 from fastapi.middleware.cors import CORSMiddleware
@@ -260,18 +252,18 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # restrict to your Vercel domain in production
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 ```
 
-Once built, Render provides a URL (e.g., `https://rag-backend.onrender.com`). Use this as `NEXT_PUBLIC_API_BASE_URL` for the frontend.
+Once built, Render provides a URL (e.g., `https://rag-backend.onrender.com`). Use this as `NEXT_PUBLIC_BACKEND_URL` environment variable for the frontend.
 
 ---
 
 ## Usage
 
-1. Visit the Frontend URL (e.g., `https://rag-project.vercel.app`).  
+1. Visit the Frontend URL (e.g., `https://rag-project-blond.vercel.app`).  
 2. Sign up / Log in via Firebase.  
 3. Upload Documents:  
    - Click “Upload” → select a PDF / DOCX / TXT file → wait for “Document processed successfully.”  
@@ -294,31 +286,29 @@ Once built, Render provides a URL (e.g., `https://rag-backend.onrender.com`). Us
 ```
 RAG-Project/
 ├── frontend/
-│   ├── components/
-│   │   ├── chatWindow.jsx
-│   │   ├── fileUpload.jsx
-│   │   ├── navbar.jsx
-│   │   └── ui/
-│   │       ├── movingBorderButton.jsx
-│   │       ├── spotlight.jsx
-│   │       └── textGenerateEffect.jsx
-│   ├── pages/
-│   │   ├── api/           # (if any Next.js API routes)
-│   │   ├── home/
-│   │   │   ├── layout.jsx
-│   │   │   └── page.jsx
-│   │   ├── login/
-│   │   │   ├── layout.jsx
-│   │   │   └── page.jsx
-│   │   ├── signup/
-│   │   │   ├── layout.jsx
-│   │   │   └── page.jsx
-│   │   ├── _app.jsx
-│   │   └── index.jsx
-│   ├── public/
-│   │   └── favicon.ico
-│   ├── styles/
-│   │   └── globals.css
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── chatWindow.jsx
+│   │   │   ├── fileUpload.jsx
+│   │   │   ├── navbar.jsx
+│   │   │   └── ui/
+│   │   │   │   ├── movingBorderButton.jsx
+│   │   │   │   ├── spotlight.jsx
+│   │   │   │   └── textGenerateEffect.jsx
+│   │   ├── app/
+│   │   │   ├── home/
+│   │   │   │   ├── layout.jsx
+│   │   │   │   └── page.jsx
+│   │   │   ├── login/
+│   │   │   │   ├── layout.jsx
+│   │   │   │   └── page.jsx
+│   │   │   ├── signup/
+│   │   │   │   ├── layout.jsx
+│   │   │   │   └── page.jsx
+│   │   ├── page.jsx
+│   │   ├── layout.jsx
+│   │   ├── not-found.jsx
+│   │   ├── globals.css
 │   ├── firebaseConfig.js
 │   ├── jsconfig.json
 │   ├── next.config.mjs
@@ -326,23 +316,14 @@ RAG-Project/
 │   ├── postcss.config.js
 │   ├── prettier.config.js
 │   ├── tailwind.config.js
-│   └── .env.local
+│   └── .env
 ├── backend/
-│   ├── app/
-│   │   ├── core/
-│   │   │   ├── embeddings.py
-│   │   │   ├── firebase_admin.py
-│   │   │   └── vector_store.py
-│   │   ├── models/
-│   │   │   └── schemas.py
-│   │   ├── routers/
-│   │   │   ├── auth.py
-│   │   │   ├── chat.py
-│   │   │   └── docs.py
-│   │   └── main.py
+│   ├── app.py
+│   ├── rag_engine.py
 │   ├── requirements.txt
 │   └── .env
 ├── LICENSE
+├── .gitignore
 └── README.md
 ```
 
@@ -385,9 +366,8 @@ This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for d
 ---
 
 ## Acknowledgments
-
-- Thanks to **OpenAI** for their Embeddings & Chat APIs.  
-- Built with **FastAPI**, **Next.js**, **Tailwind CSS**, **Firebase**, and **FAISS**.  
+ 
+- Built with **FastAPI**, **Next.js**, **Tailwind CSS**, **Firebase**, **FAISS**, and **OpenAI** Embeddings & Chat APIs.
 - Inspiration: Retrieval-Augmented Generation design patterns.
 
 ---
@@ -395,7 +375,4 @@ This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for d
 ## Contact
 
 **Author:** Vansh Gupta  
-- GitHub: [github.com/Vansh-Coder](https://github.com/Vansh-Coder)  
-- Email: _vansh@example.com_ _(replace with actual email)_  
-
-Feel free to open an issue or discussion if you have questions, feature requests, or bug reports.  
+- GitHub: [github.com/Vansh-Coder](https://github.com/Vansh-Coder)
