@@ -1,28 +1,108 @@
-# EduBot
+<table width="100%">
+  <tr>
+    <td valign="middle" width="30%">
+      <a href="https://rag-project-blond.vercel.app">
+        <img
+          src="assets/EduBotLogo.png"
+          width="400"
+          height="250"
+          alt="EduBot logo"
+        />
+      </a>
+    </td>
+    <td valign="middle" width="70%">
+      <h1 style="margin: 0;">
+        <a href="https://rag-project-blond.vercel.app">EduBot</a>
+      </h1>
+      <p style="margin: 0; font-style: italic;">
+        Context-aware AI chat built on your own documents.
+      </p>
+      <p style="margin-top: 8px;">
+        <img
+          src="https://img.shields.io/github/license/Vansh-Coder/rag-chatbot?style=flat-square&logo=opensourceinitiative&logoColor=white&color=E92063"
+          alt="License"
+        />
+        <img
+          src="https://img.shields.io/github/last-commit/Vansh-Coder/rag-chatbot?style=flat-square&logo=git&logoColor=white&color=E92063"
+          alt="Last Commit"
+        />
+        <img
+          src="https://img.shields.io/github/languages/top/Vansh-Coder/rag-chatbot?style=flat-square&color=E92063"
+          alt="Top Language"
+        />
+        <img
+          src="https://img.shields.io/github/languages/count/Vansh-Coder/rag-chatbot?style=flat-square&color=E92063"
+          alt="Language Count"
+        />
+      </p>
+      <p style="margin-top: 16px; font-style: italic;">
+        Built with the tools and technologies:
+      </p>
+      <p style="margin: 4px 0;">
+        <img
+          src="https://img.shields.io/badge/JSON-000000.svg?style=flat-square&logo=JSON&logoColor=white"
+          alt="JSON"
+        />
+        <img
+          src="https://img.shields.io/badge/npm-CB3837.svg?style=flat-square&logo=npm&logoColor=white"
+          alt="npm"
+        />
+        <img
+          src="https://img.shields.io/badge/Autoprefixer-DD3735.svg?style=flat-square&logo=Autoprefixer&logoColor=white"
+          alt="Autoprefixer"
+        />
+        <img
+          src="https://img.shields.io/badge/Firebase-DD2C00.svg?style=flat-square&logo=Firebase&logoColor=white"
+          alt="Firebase"
+        />
+        <img
+          src="https://img.shields.io/badge/PostCSS-DD3A0A.svg?style=flat-square&logo=PostCSS&logoColor=white"
+          alt="PostCSS"
+        />
+        <img
+          src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black"
+          alt="Prettier"
+        />
+        <img
+          src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black"
+          alt="JavaScript"
+        />
+      </p>
+      <p style="margin: 4px 0;">
+        <img
+          src="https://img.shields.io/badge/FastAPI-009688.svg?style=flat-square&logo=FastAPI&logoColor=white"
+          alt="FastAPI"
+        />
+        <img
+          src="https://img.shields.io/badge/LangChain-1C3C3C.svg?style=flat-square&logo=LangChain&logoColor=white"
+          alt="LangChain"
+        />
+        <img
+          src="https://img.shields.io/badge/React-61DAFB.svg?style=flat-square&logo=React&logoColor=black"
+          alt="React"
+        />
+        <img
+          src="https://img.shields.io/badge/Python-3776AB.svg?style=flat-square&logo=Python&logoColor=white"
+          alt="Python"
+        />
+        <img
+          src="https://img.shields.io/badge/OpenAI-412991.svg?style=flat-square&logo=OpenAI&logoColor=white"
+          alt="OpenAI"
+        />
+        <img
+          src="https://img.shields.io/badge/CSS-663399.svg?style=flat-square&logo=CSS&logoColor=white"
+          alt="CSS"
+        />
+      </p>
+    </td>
+  </tr>
+</table>
 
-*Context-aware AI chat built on your own documents.*
+---
 
-[![License](https://img.shields.io/github/license/Vansh-Coder/rag-chatbot?style=flat-square&logo=opensourceinitiative&logoColor=white&color=E92063)]()
-[![Last Commit](https://img.shields.io/github/last-commit/Vansh-Coder/rag-chatbot?style=flat-square&logo=git&logoColor=white&color=E92063)]()
-[![Top Language](https://img.shields.io/github/languages/top/Vansh-Coder/rag-chatbot?style=flat-square&color=E92063)]()
-[![Language Count](https://img.shields.io/github/languages/count/Vansh-Coder/rag-chatbot?style=flat-square&color=E92063)]()
+## Live Demo
 
-*Built with the tools and technologies:*
-
-![JSON](https://img.shields.io/badge/JSON-000000.svg?style=flat-square&logo=JSON&logoColor=white)
-![npm](https://img.shields.io/badge/npm-CB3837.svg?style=flat-square&logo=npm&logoColor=white)
-![Autoprefixer](https://img.shields.io/badge/Autoprefixer-DD3735.svg?style=flat-square&logo=Autoprefixer&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-DD2C00.svg?style=flat-square&logo=Firebase&logoColor=white)
-![PostCSS](https://img.shields.io/badge/PostCSS-DD3A0A.svg?style=flat-square&logo=PostCSS&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black)
-
-![FastAPI](https://img.shields.io/badge/FastAPI-009688.svg?style=flat-square&logo=FastAPI&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-1C3C3C.svg?style=flat-square&logo=LangChain&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB.svg?style=flat-square&logo=React&logoColor=black)
-![Python](https://img.shields.io/badge/Python-3776AB.svg?style=flat-square&logo=Python&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991.svg?style=flat-square&logo=OpenAI&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-663399.svg?style=flat-square&logo=CSS&logoColor=white)
+💻&nbsp;&nbsp;[Try EduBot Now! ↗](https://rag-project-blond.vercel.app)
 
 ---
 
