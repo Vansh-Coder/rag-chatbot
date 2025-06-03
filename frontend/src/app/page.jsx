@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Spotlight } from "@/components/ui/spotlight";
+import { IoLogoGithub } from "react-icons/io5";
 import MovingBorderButton from "@/components/ui/movingBorderButton";
 
 export default function Home() {
@@ -9,6 +10,17 @@ export default function Home() {
       {/* Fake background that covers over-scroll areas */}
       <div className="fixed inset-0 -z-10 bg-black" />
       <div className="fixed bg-black" />
+
+      {/* Floating button in the top-right linking to the GitHub repo */}
+      <a
+        href="https://github.com/Vansh-Coder/rag-chatbot"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute right-5 top-5 z-20 rounded-full bg-neutral-800 p-1 text-neutral-100 hover:bg-neutral-700 hover:text-white"
+      >
+        <IoLogoGithub className="h-9 w-9" />
+      </a>
+
       <div className="relative flex h-screen w-full overflow-hidden bg-black/[0.96] antialiased md:items-center md:justify-center">
         <div
           className={cn(
