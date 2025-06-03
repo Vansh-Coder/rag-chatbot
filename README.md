@@ -7,6 +7,23 @@
 [![Top Language](https://img.shields.io/github/languages/top/Vansh-Coder/RAG-Project?style=flat-square&color=E92063)]()
 [![Language Count](https://img.shields.io/github/languages/count/Vansh-Coder/RAG-Project?style=flat-square&color=E92063)]()
 
+*Built with the tools and technologies:*
+
+![JSON](https://img.shields.io/badge/JSON-000000.svg?style=flat-square&logo=JSON&logoColor=white)
+![npm](https://img.shields.io/badge/npm-CB3837.svg?style=flat-square&logo=npm&logoColor=white)
+![Autoprefixer](https://img.shields.io/badge/Autoprefixer-DD3735.svg?style=flat-square&logo=Autoprefixer&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-DD2C00.svg?style=flat-square&logo=Firebase&logoColor=white)
+![PostCSS](https://img.shields.io/badge/PostCSS-DD3A0A.svg?style=flat-square&logo=PostCSS&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black)
+
+![FastAPI](https://img.shields.io/badge/FastAPI-009688.svg?style=flat-square&logo=FastAPI&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C.svg?style=flat-square&logo=LangChain&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB.svg?style=flat-square&logo=React&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB.svg?style=flat-square&logo=Python&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991.svg?style=flat-square&logo=OpenAI&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-663399.svg?style=flat-square&logo=CSS&logoColor=white)
+
 ---
 
 ## Table of Contents
