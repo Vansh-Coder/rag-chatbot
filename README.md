@@ -31,7 +31,7 @@
           alt="Top Language"
         />
         <img
-          src="https://img.shields.io/badge/python-24.8%25-3776AB?style=flat-square&color=E92063"
+          src="https://img.shields.io/badge/python-24.7%25-3776AB?style=flat-square&color=E92063"
           alt="Second Language"
         />
         <img
