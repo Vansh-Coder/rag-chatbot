@@ -1,6 +1,6 @@
 # EduBot
 
-*An Innovating text analysis with lightning-fast retrieval.*
+*Context-aware AI chat built on your own documents.*
 
 [![License](https://img.shields.io/github/license/Vansh-Coder/RAG-Project?style=flat-square&logo=opensourceinitiative&logoColor=white&color=E92063)]()
 [![Last Commit](https://img.shields.io/github/last-commit/Vansh-Coder/RAG-Project?style=flat-square&logo=git&logoColor=white&color=E92063)]()
