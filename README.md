@@ -23,10 +23,6 @@
           alt="License"
         />
         <img
-          src="https://img.shields.io/github/last-commit/Vansh-Coder/rag-chatbot?style=flat-square&logo=git&logoColor=white&color=E92063"
-          alt="Last Commit"
-        />
-        <img
           src="https://img.shields.io/github/languages/top/Vansh-Coder/rag-chatbot?style=flat-square&color=E92063"
           alt="Top Language"
         />
