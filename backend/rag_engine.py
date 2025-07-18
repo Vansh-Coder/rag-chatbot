@@ -14,7 +14,7 @@ load_dotenv()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 
 # -------------------
-# Section 1: Preprocessing & Cleaning (unchanged)
+# Section 1: Preprocessing & Cleaning
 # -------------------
 
 def load_text(file_path: str) -> str:
@@ -90,7 +90,7 @@ def rebuild_user_index(user_id: str) -> FAISS:
     upload_folder = os.path.join(cwd, "uploads", user_id)
     index_folder = os.path.join(cwd, "faiss_indexes", user_id)
 
-    # 2. Preprocess documents (this will raise if folder missing or empty)
+    # 2. Preprocess documents (make sure folder isn't missing or empty)
     docs = preprocess_documents(upload_folder)  # List[{"text":..., "metadata":...}]
 
     texts = [d["text"] for d in docs]
@@ -133,21 +133,20 @@ def load_vectorstore(user_id: str) -> FAISS:
     return vectorstore
 
 # -------------------
-# Section 4: Retrieval helpers (unchanged)
+# Section 4: Retrieval helpers
 # -------------------
 
 def retrieve_top_k(vectorstore: FAISS, query: str, k: int = 5):
     return vectorstore.similarity_search(query, k=k)
 
 # -------------------
-# Section 5: Generation via OpenAI Chat API (unchanged)
+# Section 5: Generation via OpenAI Chat API
 # -------------------
 
 from openai import OpenAI
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-# Simple in-memory chat history. If you want “sessionless” (i.e. clear on each restart),
-# this is fine. If you need per‐user chat history, you’d persist it somewhere else.
+# Simple in-memory chat history (sessionless)
 chat_history: List[Dict[str, str]] = []
 
 def generate_answer(question: str, docs: List[Dict]) -> str:
