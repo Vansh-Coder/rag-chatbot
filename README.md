@@ -15,7 +15,7 @@
         <a href="https://rag-project-blond.vercel.app">EduBot</a>
       </h1>
       <p style="margin: 0; font-style: italic;">
-        Context-aware AI chat built on your own documents.
+        <strong>Context-aware AI chat built on your own documents.</strong>
       </p>
       <p style="margin-top: 8px;">
         <img
@@ -36,7 +36,7 @@
         />
       </p>
       <p style="margin-top: 16px; font-style: italic;">
-        Built with the tools and technologies:
+        <strong>Built with the tools and technologies:</strong>
       </p>
       <p style="margin: 4px 0;">
         <img
