@@ -130,7 +130,7 @@
 
 ## Overview
 
-EduBot is a Retrieval-Augmented Generation (RAG)–powered chatbot application. Users can upload documents (PDF, DOCX, TXT) as context, then chat with the AI to get answers based on those uploads and chat history. The frontend is built with Next.js & Tailwind CSS (hosted on Vercel). Authentication is managed via Firebase. The backend is a FastAPI service (Python) that handles document ingestion, embedding, vector storage, retrieval, and chat completion (hosted on Render).
+EduBot is a Retrieval-Augmented Generation (RAG)-powered chatbot application. Users can upload documents (PDF, DOCX, TXT) as context, then chat with the AI to get answers based on those uploads and chat history. The frontend is built with Next.js & Tailwind CSS (hosted on Vercel). Authentication is managed via Firebase. The backend is a FastAPI service (Python) that handles document ingestion, embedding, vector storage, retrieval, and chat completion (hosted on Render).
 
 ---
 
@@ -178,8 +178,8 @@ EduBot is a Retrieval-Augmented Generation (RAG)–powered chatbot application. 
 
 ### Required Accounts / API Keys
 
-1. **Firebase** – create a project with Authentication enabled (Email & Google sign-in).  
-2. **OpenAI** – obtain an API key (Model Turbo-3.5) for embeddings & chat/completion.
+1. **Firebase** - create a project with Authentication enabled (Email & Google sign-in).  
+2. **OpenAI** - obtain an API key (Model Turbo-3.5) for embeddings & chat/completion.
 
 ---
 
