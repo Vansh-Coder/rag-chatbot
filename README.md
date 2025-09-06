@@ -1,7 +1,7 @@
 <table width="100%">
   <tr>
     <td valign="middle" width="30%">
-      <a href="https://rag-project-blond.vercel.app">
+      <a href="https://edubot-rag.vercel.app">
         <img
           src="assets/EduBotLogo.png"
           width="350"
@@ -12,7 +12,7 @@
     </td>
     <td valign="middle" width="70%">
       <h1 style="margin: 0;">
-        <a href="https://rag-project-blond.vercel.app">EduBot</a>
+        <a href="https://edubot-rag.vercel.app">EduBot</a>
       </h1>
       <p style="margin: 0; font-style: italic;">
         <strong>Context-aware AI chat built on your own documents.</strong>
@@ -102,7 +102,7 @@
 
 ## Live Demo
 
-💻&nbsp;&nbsp;[Try EduBot Now! ↗](https://rag-project-blond.vercel.app)
+💻&nbsp;&nbsp;[Try EduBot Now! ↗](https://edubot-rag.vercel.app)
 
 ---
 
@@ -322,7 +322,7 @@ uvicorn app:app --reload
    - Build command: `npm run build`  
    - Output directory: `.next`  
 
-Every push to `main` triggers a deploy. You’ll get a public URL (e.g., `https://rag-project-blond.vercel.app`).
+Every push to `main` triggers a deploy. You’ll get a public URL (e.g., `https://edubot-rag.vercel.app`).
 
 ---
 
@@ -360,7 +360,7 @@ Once built, Render provides a URL (e.g., `https://rag-backend.onrender.com`). Us
 
 ## Usage
 
-1. Visit the Frontend URL (e.g., `https://rag-project-blond.vercel.app`).  
+1. Visit the Frontend URL (e.g., `https://edubot-rag.vercel.app`).  
 2. Sign up / Log in via Firebase.  
 3. Upload Documents:  
    - Click “Upload” → select a PDF / DOCX / TXT file → wait for “Document processed successfully.”  
